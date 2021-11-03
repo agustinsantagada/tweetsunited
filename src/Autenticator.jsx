@@ -9,10 +9,9 @@ export default function Autenticator () {
   
   return (
     <div>
-      <AutenticatorGoogle />
+      {!user ? <AutenticatorGoogle /> : <Feed/>}
     </div>
   );
-
 }
 
 

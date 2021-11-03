@@ -5,6 +5,7 @@ import HandleDelete from "./Handles/HandleDelete";
 import HandleEdit from "./Handles/HandleDelete";
 import HandleFavourite from "./Handles/HandleFavorite";
 import HandleUnFavourite from "./Handles/HandleUnfavorite";
+import { firestore } from "./Firebase"
 import { AppContext } from "./AppContext"
 import { useContext } from "react";
 import "./styles.css";

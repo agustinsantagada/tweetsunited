@@ -1,11 +1,11 @@
 
 import { AppContext } from "./AppContext"
 import { useContext } from "react";
+import { firestore } from "./Firebase"
 
 import {
     collection,
     getDocs,
-    firestore
   } from "firebase/firestore";
 
 const FetchData = () => {
