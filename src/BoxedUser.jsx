@@ -6,11 +6,7 @@ const BoxedUser = ({ photoURL, email, displayName, logout }) => {
       <img src={photoURL} width="50px" alt={displayName} />
       <h2>{displayName}</h2>
       <h3>{email}</h3>
-      <button
-        onClick={() => {
-          logout();
-        }}
-      >
+      <button onClick={() => { logout() }} >
         Logout
       </button>
     </div>

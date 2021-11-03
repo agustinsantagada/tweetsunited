@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { AppContext } from "./AppContext";
-import  AutenticatorGoogle  from "./AutenticatorGoogle"
 import  Feed from "./Feed"
 
 export default function Autenticator () {
@@ -9,12 +8,8 @@ export default function Autenticator () {
   
   return (
     <div>
-      <AutenticatorGoogle />
+      <Feed />
     </div>
   );
 
 }
-
-
-
-
