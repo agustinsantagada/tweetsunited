@@ -8,8 +8,9 @@ import {
     getDocs,
   } from "firebase/firestore";
 
-const FetchData = () => {
+  
 
+const FetchData = () => {
     const { setTweets } = useContext(AppContext)
     const tweetsCollection = collection(firestore, "Tweets");
     const tweetsCreation = [];

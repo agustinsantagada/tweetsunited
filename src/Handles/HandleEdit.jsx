@@ -1,5 +1,5 @@
 import FetchData from "../FetchData";
-import { firestore } from "firebase";
+import { firestore } from "../Firebase";
 import {
     doc,
     updateDoc,

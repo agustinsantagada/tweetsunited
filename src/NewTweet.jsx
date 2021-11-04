@@ -1,29 +1,34 @@
-// import "./styles.css";
-// import { AppContext } from "./AppContext"
-// import React, { useContext } from "react";
-// import HandleSubmit from "./Handles/HandleSubmit";
-// import FetchData from "../FetchData";
+import React from "react";
+import Autenticator from "./Autenticator.jsx";
+import handleSubmit from "./Handles/HandleSubmit";
+import HandleDelete from "./Handles/HandleDelete";
+import HandleEdit from "./Handles/HandleDelete";
+import HandleFavourite from "./Handles/HandleFavorite";
+import HandleUnFavourite from "./Handles/HandleUnfavorite";
+import { firestore } from "./Firebase"
+import { AppContext } from "./AppContext"
+import { useContext } from "react";
 
 
-// const NewTweet = () => {
+const NewTweet = () => {
 
-//     const { setText, setUser } = useContext(AppContext)
+  const { text, setText } = useContext(AppContext)
 
-//     {<FetchData/>}
+  return (
+    <div>
+      <form onSubmit={handleSubmit} >
+        <textarea
+          type="text"
+          placeholder="What's happening?"
+          value={text}
+          onChange={(e) => {
+            setText(e.target.value);
+          }}
+        ></textarea>
+        <button>POST!</button>
+      </form>
+    </div>
+  );
+}
 
-//     <form onSubmit={HandleSubmit}>
-//             <div>
-//                 <label>Nombre: </label>
-//                 <input type="text" onChange={(event) => {setUser(event.target.value)}}/>
-//             </div>
-//             <div>
-//                 <label>Texto </label>
-//                 <input type="text" onChange={(event) => {setText(event.target.value)}}/>
-//             </div>
-//             <button> Tweetear </button>
-//             </form>
-
-//                 }
-
-
-// export default NewTweet;
+export default NewTweet;

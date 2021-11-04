@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Autenticator from "./Autenticator.jsx";
 import HandleSubmit from "./Handles/HandleSubmit";
 import HandleDelete from "./Handles/HandleDelete";
@@ -8,53 +8,54 @@ import HandleUnFavourite from "./Handles/HandleUnfavorite";
 import { firestore } from "./Firebase"
 import { AppContext } from "./AppContext"
 import { useContext } from "react";
-import "./styles.css";
+import FetchData  from "./FetchData"
+import {
+  collection,
+  getDocs,
+  onSnapshot,
+  query,
+  orderBy
+} from "firebase/firestore";
+
+
 
 const MapTweet = () => {
 
-  const { user, setUser, setText, tweets } = useContext(AppContext)
+  const { tweets, setTweets } = useContext(AppContext)
+  
+  // useEffect(() => {
+  //   FetchData();
+  // }, []);
+  
+       useEffect(() => {
+        const tweetsCollection = collection(firestore, "tweets");
+        const tweetsCreation = [];
 
-return (
-    <div className="App">
-      {!user ? (
-        <>
-          <Autenticator />
-        </>
-      ) : (
-        <form onSubmit={HandleSubmit}>
-          <div>
-            <label>Nombre: </label>
-            <input type="text" onChange={(event) => {setUser(event.target.value)}}/>
-          </div>
-          <div>
-            <label>Texto </label>
-            <input type="text" onChange={(event) => { setText(event.target.value)}}/>
-          </div>
-          <button> Tweetear </button>
-        </form>
-      )}
-      { tweets.map((e, index) => {
-        return (
-          <div>
-            <h1 key={index}>
-              Ultima Actualizacion: {""}
-              {e.lastUpdate
-                ? new Date(e.lastUpdate?.seconds * 1000).toLocaleString("en")
-                : "No disponible"}
-            </h1>
-            <h1>{e.contador}</h1>
-            <h1>{e.user}</h1>
+        getDocs(tweetsCollection).then((results) => {
+          results.forEach((e) => {
+            console.log(e.id);
+            tweetsCreation.push({ ...e.data(), 
+              id: e.id });
+          });
+          setTweets(tweetsCreation);
+        });
+      }, []);
 
-            <button onClick={() => {HandleDelete(e)}}> eliminar </button>
-
-            <button onClick={() => {HandleEdit(e)}}> Editar</button>
-            {!e.favorito > 0 && (
-              <button onClick={() => {HandleFavourite(e)}} > Favorito </button> )}
-            {e.favorito && ( <button onClick={() => {HandleUnFavourite(e)}}> Desafavoritear </button> )}
-          </div>
-        );
-      })}
-    </div>
-  )}
+    return (
+      <div className="App">
+        <div>
+          <h2>Listado de tweets</h2>
+          {tweets.map((e) => {
+            return (
+              <div key={e.id}>
+                <h3>{e.user}</h3>
+                <p>{e.content}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
 
 export default MapTweet

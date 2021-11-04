@@ -1,9 +1,9 @@
 import FetchData from "../FetchData";
-import { firestore } from "firebase";
+import { firestore } from "../Firebase";
 import {
     doc,
     updateDoc,
-  } from "firebase/firestore";
+  } from "@firebase/firestore";
   
   const HandleFavorite = (e) => {
     updateDoc(doc(firestore, "Tweets", e.id), {

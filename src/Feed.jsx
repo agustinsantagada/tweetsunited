@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "./AppContext";
-import MapTweet from "./MapTweet";
+import NewTweet  from "./NewTweet"
+import MapTweet from "./MapTweet"
 
 export default function Autenticator () {
 
@@ -8,9 +9,8 @@ export default function Autenticator () {
   
   return (
     <div>
-      Hola
-     {/* <MapTweet /> */}
+     <NewTweet />
+     <MapTweet />
     </div>
   );
-
 }

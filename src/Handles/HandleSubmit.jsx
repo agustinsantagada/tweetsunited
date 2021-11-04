@@ -1,27 +1,26 @@
 import FetchData from "../FetchData";
-import { firestore } from "firebase";
+import { firestore } from "../Firebase";
 import { useContext } from "react";
-import { AppContext } from "./AppContext"
+import { AppContext } from "../AppContext"
 import {
     collection,
     addDoc,
-  } from "firebase/firestore";
+       } from "firebase/firestore";
 
+const { text, user } = useContext(AppContext)
 
-const HandleSubmit = (event) => {
-    const { text, user } = useContext(AppContext)
+const handleSubmit = (event) => {
 
     event.preventDefault();
-    console.log(text, user);
     if (text.length > 3 && text.length > 3) {
-    const tweetsCollection = collection(firestore, "Tweets");
+    const tweetsCollection = collection(firestore, "tweets");
     addDoc(tweetsCollection, {
-        user,
-        text
+        user: user,
+        content: text
     }).then(() => {
         FetchData();
     });
     }
 };
 
-export default HandleSubmit;
+export default handleSubmit;

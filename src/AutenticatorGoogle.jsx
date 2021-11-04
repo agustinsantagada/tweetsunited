@@ -8,7 +8,7 @@ import {
   signInWithPopup, 
   GoogleAuthProvider,  
   setPersistence, 
-  browserLocalPersistence } from "@firebase/auth";
+  browserLocalPersistence } from "firebase/auth";
 
 const AutenticatorGoogle = () => {
 
