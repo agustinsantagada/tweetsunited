@@ -8,7 +8,6 @@ import HandleUnFavourite from "./Handles/HandleUnfavorite";
 import { firestore } from "./Firebase"
 import { AppContext } from "./AppContext"
 import { useContext } from "react";
-import FetchData  from "./FetchData"
 import {
   collection,
   getDocs,
@@ -22,10 +21,6 @@ import {
 const MapTweet = () => {
 
   const { tweets, setTweets } = useContext(AppContext)
-  
-  // useEffect(() => {
-  //   FetchData();
-  // }, []);
   
        useEffect(() => {
         const tweetsCollection = collection(firestore, "tweets");
@@ -49,7 +44,8 @@ const MapTweet = () => {
             return (
               <div key={e.id}>
                 <h3>{e.user}</h3>
-                <p>{e.content}</p>
+                <p>{e.text}</p>
+                <p>{new Date(e.fecha?.seconds * 1000).toLocaleString("en")}</p>
               </div>
             );
           })}

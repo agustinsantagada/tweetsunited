@@ -1,25 +1,53 @@
-import React from "react";
-import Autenticator from "./Autenticator.jsx";
-import handleSubmit from "./Handles/HandleSubmit";
-import HandleDelete from "./Handles/HandleDelete";
-import HandleEdit from "./Handles/HandleDelete";
-import HandleFavourite from "./Handles/HandleFavorite";
-import HandleUnFavourite from "./Handles/HandleUnfavorite";
+import React, { useEffect, useContext } from "react";
+import { collection, addDoc, getDocs } from "firebase/firestore";
+import HandleSubmit from "./Handles/HandleSubmit";
 import { firestore } from "./Firebase"
 import { AppContext } from "./AppContext"
-import { useContext } from "react";
 
+export default function NewPost() {
 
-const NewTweet = () => {
+  const { user, text, setText, fecha, setTweets } = useContext(AppContext);
+  
+  // const HandleSubmit = (text, user, setTweets) => {
 
-  const { text, setText } = useContext(AppContext)
+  //   const fetchData = () => {
+  //   const tweetsCollection = collection(firestore, "Tweets");
+  //   const tweetsCreation = [];
+  //   getDocs(tweetsCollection).then((results) => {
+  //     results.forEach((e) => {
+  //       console.log(e.id);
+  //       // console.log(e.data());
+  //       tweetsCreation.push({ ...e.data(), id: e.id });
+  //     });
+  //     setTweets(tweetsCreation);
+  //   });
+  // };
+
+  //   if (text.length > 3 && text.length > 3) {
+  //   console.log("Hola", user, text)
+  //   const tweetsCollection = collection(firestore, "tweets");
+  //   addDoc(tweetsCollection, {
+  //       fecha: new Date(),
+  //       user: user.displayName,
+  //       text: text
+  //   }).then((resultado) => {
+  //       fetchData()
+  //       console.log("ENTRANDO")
+  //   });
+  //   }
+  // };
 
   return (
     <div>
-      <form onSubmit={handleSubmit} >
+      <form 
+      onSubmit={(event)=>{event.preventDefault(); HandleSubmit(text, user, fecha, setTweets)
+        
+        // .then(()=>{FetchaData()})
+      }}
+        >
         <textarea
           type="text"
-          placeholder="What's happening?"
+          placeholder="Mensaje de texto"
           value={text}
           onChange={(e) => {
             setText(e.target.value);
@@ -30,5 +58,3 @@ const NewTweet = () => {
     </div>
   );
 }
-
-export default NewTweet;

@@ -7,10 +7,13 @@ export const AppProvider = (props) => {
     const [error, setError] = useState("");
     const [tweets, setTweets] = useState([]);
     const [text, setText] = useState("");
+    const [fecha, setFecha] = useState("");
     
     return(
         <AppContext.Provider 
         value={{
+            fecha,
+            setFecha,
             data,
             setData,
             userLogin, 
