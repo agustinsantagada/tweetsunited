@@ -1,23 +1,59 @@
 import React, { useEffect } from "react";
 import { AppContext } from "./AppContext"
 import { useContext } from "react";
-import { getTweets }  from "./FirebaseActions"
+import { firestore } from "./Firebase";
+// import { getTweetsByUser }  from "./FirebaseActions"
 import { removeTweets }  from "./FirebaseActions"
 import { updateTweets }  from "./FirebaseActions"
+import {
+    collection,
+    getDocs,
+    query,
+    where
+  } from "firebase/firestore";
 
 
-const MapTweet = () => {
+const MapTweetUser = () => {
 
-  const { tweets, setTweets } = useContext(AppContext)
+  const { user, tweets, setTweets } = useContext(AppContext)
+
+  const tweetsCollection = collection(firestore, "tweets")
+
+//     const getTweetsByUser = async (userId) => {
+//     const tweetsCreation = [];
+//     console.log("USER", user.uid)
+//     const filteredTweetsCollection = query(tweetsCollection, where("user.uid", "==", userId));
+//     const filteredTweetsSnapshot = await getDocs(filteredTweetsCollection);
+//     filteredTweetsSnapshot.forEach((tweet) => {
+//       if (tweet.data().user.uid === userId) {
+//       tweetsCreation.push({...tweet.data(), uid: tweet.uid});
+//       }
+//     });
+//     return tweetsCreation;
+//   };
+
+const getTweetsByUser = async (userId) => {
+    const tweetsCreation = [];
+    const tweetsSnapshot = await getDocs(tweetsCollection);
+    tweetsSnapshot.forEach((tweet) => {
+        if(tweet.data().user.id === userId){
+        tweetsCreation.push({...tweet.data(), id: tweet.id});
+        }
+    });
+    return tweetsCreation;
+};
+
 
   const fetchData = async () => {
-    const tweetsAqui = await getTweets();
+    const tweetsAqui = await getTweetsByUser(user.uid);
+    console.log("Viene el user", user.uid)
     setTweets(tweetsAqui)
   }
 
   useEffect(()=> {
-    fetchData()
-  },)
+    fetchData();
+  }, [])
+
 
   const handleDelete = async (tweet) => {
     await removeTweets(tweet);
@@ -30,7 +66,7 @@ const MapTweet = () => {
       counter:
         typeof tweet.counter === "number" ? tweet.counter + 1 : 1
     })
-      fetchData();
+    fetchData();
   };
 
   const handleUnLike = async (tweet) => {
@@ -39,14 +75,15 @@ const MapTweet = () => {
       counter:
         typeof tweet.counter === "number" ? tweet.counter - 1 : 1
     })
-      fetchData();
+    fetchData();
+    
   };
 
     return (
       <div className="App">
         <div>
-          <h2>Listado de tweets</h2>
-          {tweets.map((tweet, index) => {
+          <h2>Tweets Personales</h2>
+          {tweets.map((tweet) => {
             return (
               <div key={tweet.id}>
                 <h3>{tweet.displayName}</h3>
@@ -63,7 +100,7 @@ const MapTweet = () => {
                   <button onClick={() => {handleUnLike(tweet)}}>
                     <span role="img" aria-label="No Favorito">🖤</span>
                     UnLike
-                  </button>
+                    </button>
                 )}
               </div>
             );
@@ -73,4 +110,6 @@ const MapTweet = () => {
     );
   }
 
-export default MapTweet
+export default MapTweetUser
+
+

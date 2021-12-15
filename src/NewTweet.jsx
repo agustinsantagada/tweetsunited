@@ -1,60 +1,54 @@
-import React, { useEffect, useContext } from "react";
-import { collection, addDoc, getDocs } from "firebase/firestore";
-import HandleSubmit from "./Handles/HandleSubmit";
-import { firestore } from "./Firebase"
+import React, { useContext } from "react";
 import { AppContext } from "./AppContext"
+import { getTweets }  from "./FirebaseActions"
+import { addTweet }  from "./FirebaseActions"
 
 export default function NewPost() {
 
-  const { user, text, setText, fecha, setTweets } = useContext(AppContext);
-  
-  // const HandleSubmit = (text, user, setTweets) => {
+  const { user, text, setText, setTweets } = useContext(AppContext);
 
-  //   const fetchData = () => {
-  //   const tweetsCollection = collection(firestore, "Tweets");
-  //   const tweetsCreation = [];
-  //   getDocs(tweetsCollection).then((results) => {
-  //     results.forEach((e) => {
-  //       console.log(e.id);
-  //       // console.log(e.data());
-  //       tweetsCreation.push({ ...e.data(), id: e.id });
-  //     });
-  //     setTweets(tweetsCreation);
-  //   });
-  // };
+  const fetchData = async () => {
+    const tweetsAqui = await getTweets();
+    console.log(tweetsAqui);
+    setTweets(tweetsAqui)
+  }
 
-  //   if (text.length > 3 && text.length > 3) {
-  //   console.log("Hola", user, text)
-  //   const tweetsCollection = collection(firestore, "tweets");
-  //   addDoc(tweetsCollection, {
-  //       fecha: new Date(),
-  //       user: user.displayName,
-  //       text: text
-  //   }).then((resultado) => {
-  //       fetchData()
-  //       console.log("ENTRANDO")
-  //   });
-  //   }
-  // };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await addTweet({
+      id: user.id,
+      fecha: new Date(), 
+      displayName: user.displayName,
+      text: text
+      });
+    setText("");
+    fetchData();
+  };
 
   return (
     <div>
-      <form 
-      onSubmit={(event)=>{event.preventDefault(); HandleSubmit(text, user, fecha, setTweets)
-        
-        // .then(()=>{FetchaData()})
-      }}
-        >
+      <form>
         <textarea
           type="text"
           placeholder="Mensaje de texto"
           value={text}
-          onChange={(e) => {
-            setText(e.target.value);
-          }}
-        ></textarea>
-        <button>POST!</button>
+          onChange={(tweet) => {setText(tweet.target.value)}}></textarea>
+        <button onClick={handleSubmit}>POST!</button>
       </form>
     </div>
   );
 }
+
+
+ // if (text.length > 3 && text.length > 3) {
+    // console.log("Hola", user, text)
+    // const tweetsCollection = collection(firestore, "tweets");
+    // addDoc(tweetsCollection, {
+    //     fecha: new Date(),
+    //     user: user.displayName,
+    //     text: text
+    // }).then((resultado) => {
+    //     fetchData()
+    //     console.log("ENTRANDO")
+    // });
+    // }

@@ -1,6 +1,5 @@
 import React, { useEffect, useContext } from "react";
 import { AppContext } from "./AppContext";
-import { firestore } from "./Firebase"
 import  BoxedUser  from "./BoxedUser";
 import { 
   getAuth, 
@@ -12,36 +11,35 @@ import {
 
 const AutenticatorGoogle = () => {
 
-  const { userLogin, setUserLogin, user, setUser, error, setError } = useContext(AppContext);
+  const { setUserLogin, user, setUser, error } = useContext(AppContext);
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
 
 
   useEffect(() => {
     setPersistence(auth, browserLocalPersistence).then(() => {
-      console.log(auth.currentUser);
-      setUserLogin(auth.currentUser);
+      // console.log(auth.currentUser);
       setUserLogin(auth.currentUser);
     });
-  }, []);
+  }, );
 
 
 const values = () => {
   signInWithPopup(auth, provider)
       .then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
+        // const credential = GoogleAuthProvider.credentialFromResult(result);
+        // const token = credential.accessToken;
         const user = result.user;
         setUser(result.user);
         console.log("el usuario se logeo", user);
       })
 
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const email = error.email;
-        const credential = GoogleAuthProvider.credentialFromError(error);
-      });
+      // .catch((error) => {
+      //   const errorCode = error.code;
+      //   const errorMessage = error.message;
+      //   const email = error.email;
+      //   const credential = GoogleAuthProvider.credentialFromError(error);
+      // });
   };
 
   const logout = () => {
@@ -66,7 +64,9 @@ const values = () => {
           <div>{error}</div>
         </div>
        : 
-        <BoxedUser {...user} logout={logout} />
+        <BoxedUser {...user} 
+        logout={logout} 
+        />
       }
     </div>
   );

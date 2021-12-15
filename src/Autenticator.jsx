@@ -5,11 +5,11 @@ import  Feed from "./Feed"
 
 export default function Autenticator () {
 
-  const { user, setUser } = useContext(AppContext);
+  const { user } = useContext(AppContext);
   
   return (
     <div>
-      {!user ? <AutenticatorGoogle /> : <Feed/>}
+      {!user ? <AutenticatorGoogle/> : <Feed/>}
     </div>
   );
 }

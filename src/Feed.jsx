@@ -1,14 +1,13 @@
-import React, { useContext } from "react";
-import { AppContext } from "./AppContext";
+import React from "react";
 import NewTweet  from "./NewTweet"
 import MapTweet from "./MapTweet"
+// import MapTweetUser from "./MapTweetUser"
 
 export default function Autenticator () {
 
-  const { user, setUser } = useContext(AppContext);
-  
   return (
     <div>
+     {/* <MapTweetUser /> */}
      <NewTweet />
      <MapTweet />
     </div>
