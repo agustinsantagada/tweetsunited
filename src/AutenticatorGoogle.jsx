@@ -18,7 +18,6 @@ const AutenticatorGoogle = () => {
 
   useEffect(() => {
     setPersistence(auth, browserLocalPersistence).then(() => {
-      // console.log(auth.currentUser);
       setUserLogin(auth.currentUser);
     });
   }, );
@@ -27,20 +26,9 @@ const AutenticatorGoogle = () => {
 const values = () => {
   signInWithPopup(auth, provider)
       .then((result) => {
-        // const credential = GoogleAuthProvider.credentialFromResult(result);
-        // const token = credential.accessToken;
-        const user = result.user;
         setUser(result.user);
         console.log("PRUEBA RESULT", result)
-        // console.log("el usuario se logeo", user);
       })
-
-      // .catch((error) => {
-      //   const errorCode = error.code;
-      //   const errorMessage = error.message;
-      //   const email = error.email;
-      //   const credential = GoogleAuthProvider.credentialFromError(error);
-      // });
   };
 
   const logout = () => {

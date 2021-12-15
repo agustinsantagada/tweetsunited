@@ -5,21 +5,19 @@ import { getTweetsByUser }  from "./FirebaseActions"
 import { removeTweets }  from "./FirebaseActions"
 import { updateTweets }  from "./FirebaseActions"
 
-
 const MapTweetUser = () => {
 
-  const { user, tweets, setTweets } = useContext(AppContext)
+  const { user, tweetsUser, setTweetsUser } = useContext(AppContext)
 
   const fetchData = async () => {
     const tweetsAqui = await getTweetsByUser(user.uid);
     console.log("Viene el user", user.uid)
-    setTweets(tweetsAqui)
+    setTweetsUser(tweetsAqui)
   }
 
   useEffect(()=> {
     fetchData();
   }, [])
-
 
   const handleDelete = async (tweet) => {
     await removeTweets(tweet);
@@ -42,14 +40,13 @@ const MapTweetUser = () => {
         typeof tweet.counter === "number" ? tweet.counter - 1 : 1
     })
     fetchData();
-    
   };
 
     return (
       <div className="App">
         <div>
           <h2>Tweets Personales</h2>
-          {tweets.map((tweet) => {
+          {tweetsUser.map((tweet) => {
             return (
               <div key={tweet.id}>
                 <h3>{tweet.displayName}</h3>

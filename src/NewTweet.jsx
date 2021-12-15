@@ -6,30 +6,31 @@ import { getTweetsByUser }  from "./FirebaseActions"
 
 export default function NewPost() {
 
-  const { user, text, setText, setTweets } = useContext(AppContext);
+  const { user, text, setText, setTweets, setTweetsUser } = useContext(AppContext);
+
+  const fetchDataUser = async () => {
+    const tweetsAqui = await getTweetsByUser(user.uid);
+    console.log("Viene el user", user.uid)
+    setTweetsUser(tweetsAqui)
+  }
 
   const fetchData = async () => {
     const tweetsAqui = await getTweets();
-    console.log(tweetsAqui);
+    // console.log("Viene el NEW USER", user.uid)
     setTweets(tweetsAqui)
   }
-
-  // const fetchData = async () => {
-  //   const tweetsAqui = await getTweetsByUser(user.uid);
-  //   console.log("Viene el user", user.uid)
-  //   setTweets(tweetsAqui)
-  // }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await addTweet({
-      id: user.uid,
+      user: user.uid,
       fecha: new Date(), 
       displayName: user.displayName,
       text: text
       });
     setText("");
     fetchData();
+    fetchDataUser();
   };
 
   return (

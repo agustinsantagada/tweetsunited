@@ -9,7 +9,6 @@ import {
     query,
     where
   } from "firebase/firestore";
-
   const tweetsCollection = collection(firestore, "tweets")
   
   
@@ -41,15 +40,17 @@ export const updateTweets = async (tweet, upd ) => {
 
 export const getTweetsByUser = async (userId) => {
   const tweets = []
-  const filteredTweetsCollection = query(tweetsCollection, where("user.id", "==", userId));
+  const filteredTweetsCollection = query(tweetsCollection, where("user", "==", userId));
   const filteredTweetsSnapshot = await getDocs(filteredTweetsCollection);
   filteredTweetsSnapshot.forEach((tweet) => {
-    if (tweet.data().user.id === userId) {
-      tweets.push({...tweet.data(), id: tweet.id});
+    if (tweet.data().user === userId) {
+      tweets.push({...tweet.data(), user: tweet.id});
     }
   });
   return tweets;
 };
+
+
 
 
 

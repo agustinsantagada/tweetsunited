@@ -6,6 +6,7 @@ export const AppProvider = (props) => {
     const [user, setUser] = useState();
     const [error, setError] = useState("");
     const [tweets, setTweets] = useState([]);
+    const [tweetsUser, setTweetsUser] = useState([]);
     const [text, setText] = useState("");
     const [fecha, setFecha] = useState("");
 
@@ -26,7 +27,9 @@ export const AppProvider = (props) => {
             text,
             setText,
             tweets,
-            setTweets
+            setTweets,
+            tweetsUser,
+            setTweetsUser
             }}>
             {props.children}
         </AppContext.Provider>

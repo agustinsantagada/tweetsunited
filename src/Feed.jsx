@@ -1,6 +1,6 @@
 import React from "react";
 import NewTweet  from "./NewTweet"
-// import MapTweet from "./MapTweet"
+import MapTweet from "./MapTweet"
 import MapTweetUser from "./MapTweetUser"
 
 export default function Autenticator () {
@@ -9,7 +9,7 @@ export default function Autenticator () {
     <div>
      <MapTweetUser />
      <NewTweet />
-     {/* <MapTweet /> */}
+     <MapTweet />
     </div>
   );
 }
