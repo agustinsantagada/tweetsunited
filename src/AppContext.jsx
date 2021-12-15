@@ -2,8 +2,8 @@ import React, { useState, createContext} from "react";
 
 export const AppProvider = (props) => {
     const [data, setData] = useState(true);
-    const [userLogin, setUserLogin] = useState(undefined);
-    const [user, setUser] = useState(undefined);
+    const [userLogin, setUserLogin] = useState();
+    const [user, setUser] = useState();
     const [error, setError] = useState("");
     const [tweets, setTweets] = useState([]);
     const [text, setText] = useState("");

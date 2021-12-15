@@ -1,48 +1,14 @@
 import React, { useEffect } from "react";
 import { AppContext } from "./AppContext"
 import { useContext } from "react";
-import { firestore } from "./Firebase";
-// import { getTweetsByUser }  from "./FirebaseActions"
+import { getTweetsByUser }  from "./FirebaseActions"
 import { removeTweets }  from "./FirebaseActions"
 import { updateTweets }  from "./FirebaseActions"
-import {
-    collection,
-    getDocs,
-    query,
-    where
-  } from "firebase/firestore";
 
 
 const MapTweetUser = () => {
 
   const { user, tweets, setTweets } = useContext(AppContext)
-
-  const tweetsCollection = collection(firestore, "tweets")
-
-//     const getTweetsByUser = async (userId) => {
-//     const tweetsCreation = [];
-//     console.log("USER", user.uid)
-//     const filteredTweetsCollection = query(tweetsCollection, where("user.uid", "==", userId));
-//     const filteredTweetsSnapshot = await getDocs(filteredTweetsCollection);
-//     filteredTweetsSnapshot.forEach((tweet) => {
-//       if (tweet.data().user.uid === userId) {
-//       tweetsCreation.push({...tweet.data(), uid: tweet.uid});
-//       }
-//     });
-//     return tweetsCreation;
-//   };
-
-const getTweetsByUser = async (userId) => {
-    const tweetsCreation = [];
-    const tweetsSnapshot = await getDocs(tweetsCollection);
-    tweetsSnapshot.forEach((tweet) => {
-        if(tweet.data().user.id === userId){
-        tweetsCreation.push({...tweet.data(), id: tweet.id});
-        }
-    });
-    return tweetsCreation;
-};
-
 
   const fetchData = async () => {
     const tweetsAqui = await getTweetsByUser(user.uid);

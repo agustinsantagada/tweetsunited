@@ -12,6 +12,7 @@ import {
 
   const tweetsCollection = collection(firestore, "tweets")
   
+  
 export const getTweets = async () => {
       const tweetsCreation = [];
       const tweetsSnapshot = await getDocs(tweetsCollection);
@@ -38,17 +39,17 @@ export const updateTweets = async (tweet, upd ) => {
   return updTweet;
 };
 
-// export const getTweetsByUser = async (userId) => {
-//   const tweetsCreation = [];
-//   const filteredTweetsCollection = query(tweetsCollection, where("user.id", "==", userId));
-//   const filteredTweetsSnapshot = await getDocs(filteredTweetsCollection);
-//   filteredTweetsSnapshot.forEach((tweet) => {
-//     if (tweet.data().user.id === userId) {
-//     tweetsCreation.push({...tweet.data(), id: tweet.id});
-//     }
-//   });
-//   return tweetsCreation;
-// };
+export const getTweetsByUser = async (userId) => {
+  const tweets = []
+  const filteredTweetsCollection = query(tweetsCollection, where("user.id", "==", userId));
+  const filteredTweetsSnapshot = await getDocs(filteredTweetsCollection);
+  filteredTweetsSnapshot.forEach((tweet) => {
+    if (tweet.data().user.id === userId) {
+      tweets.push({...tweet.data(), id: tweet.id});
+    }
+  });
+  return tweets;
+};
 
 
 

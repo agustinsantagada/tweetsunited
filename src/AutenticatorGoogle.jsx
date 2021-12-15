@@ -31,7 +31,8 @@ const values = () => {
         // const token = credential.accessToken;
         const user = result.user;
         setUser(result.user);
-        console.log("el usuario se logeo", user);
+        console.log("PRUEBA RESULT", result)
+        // console.log("el usuario se logeo", user);
       })
 
       // .catch((error) => {

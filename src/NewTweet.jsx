@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { AppContext } from "./AppContext"
 import { getTweets }  from "./FirebaseActions"
 import { addTweet }  from "./FirebaseActions"
+import { getTweetsByUser }  from "./FirebaseActions"
 
 export default function NewPost() {
 
@@ -13,10 +14,16 @@ export default function NewPost() {
     setTweets(tweetsAqui)
   }
 
+  // const fetchData = async () => {
+  //   const tweetsAqui = await getTweetsByUser(user.uid);
+  //   console.log("Viene el user", user.uid)
+  //   setTweets(tweetsAqui)
+  // }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     await addTweet({
-      id: user.id,
+      id: user.uid,
       fecha: new Date(), 
       displayName: user.displayName,
       text: text
