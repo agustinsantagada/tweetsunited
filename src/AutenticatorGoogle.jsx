@@ -1,6 +1,8 @@
+import "./Styles/AuthGoogle.css"
 import React, { useEffect, useContext } from "react";
 import { AppContext } from "./AppContext";
-import  BoxedUser  from "./BoxedUser";
+import  BoxedUser  from "./UserPage";
+import GoogleButton from 'react-google-button'
 import { 
   getAuth, 
   signOut,
@@ -18,6 +20,7 @@ const AutenticatorGoogle = () => {
 
   useEffect(() => {
     setPersistence(auth, browserLocalPersistence).then(() => {
+      // console.log(auth.currentUser);
       setUserLogin(auth.currentUser);
     });
   }, );
@@ -26,8 +29,10 @@ const AutenticatorGoogle = () => {
 const values = () => {
   signInWithPopup(auth, provider)
       .then((result) => {
+        const user = result.user;
         setUser(result.user);
         console.log("PRUEBA RESULT", result)
+        console.log("el usuario se logeo", user);
       })
   };
 
@@ -40,16 +45,16 @@ const values = () => {
   
   return (
     <div>
-      Aquí va a aparecer la autenticación
       {(!user) ? 
-        <div>
-          <button
+        <div className="gSignInWrapper">
+          <GoogleButton
+            className="google-btn"
             onClick={() => {
               values();
             }}
           >
             Logear con google
-          </button>
+          </GoogleButton>
           <div>{error}</div>
         </div>
        : 

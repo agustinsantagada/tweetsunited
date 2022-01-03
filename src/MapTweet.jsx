@@ -8,7 +8,7 @@ import { updateTweets }  from "./FirebaseActions"
 
 const MapTweet = () => {
 
-  const { tweets, setTweets } = useContext(AppContext)
+  const { id, user, tweets, setTweets } = useContext(AppContext)
 
   const fetchData = async () => {
     const tweetsAqui = await getTweets();
@@ -17,7 +17,7 @@ const MapTweet = () => {
 
   useEffect(()=> {
     fetchData()
-  },)
+  },[])
 
   const handleDelete = async (tweet) => {
     await removeTweets(tweet);
@@ -47,13 +47,18 @@ const MapTweet = () => {
         <div>
           <h2>Listado de tweets</h2>
           {tweets.map((tweet, index) => {
+            console.log(user)
             return (
               <div key={tweet.id}>
                 <h3>{tweet.displayName}</h3>
                 <p>{tweet.text}</p>
                 <p>{new Date(tweet.fecha?.seconds * 1000).toLocaleString("en")}</p>
                 <h1>{tweet.counter}</h1>
-                <button onClick={()=>{handleDelete(tweet)}}>Borrar</button>
+                
+                {tweet.user === user.uid ? 
+                <button onClick={()=>{handleDelete(tweet)}}>Borrar</button>  
+                : null }  
+          
                 {!tweet.counter && (
                 <button onClick={()=>{handleLike(tweet)}}>
                   <span role="img" aria-label="favorito">🧡</span>

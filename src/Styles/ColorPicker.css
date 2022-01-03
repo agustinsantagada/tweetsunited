@@ -1,0 +1,17 @@
+.color {
+    display: inline-block;
+    width: 3em;
+    height: 3em;
+    margin: 0.55em;
+    border: 1px solid black;
+  }
+
+  .color:hover{
+    border: 0.5em solid white;
+  }
+
+  .colorpicker{
+    /* width: 1em;
+    height: 1em; */
+  }
+  

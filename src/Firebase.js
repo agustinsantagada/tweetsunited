@@ -14,6 +14,9 @@ const firebaseConfig = {
   measurementId: "G-P29LGSNGPS"
 };
 
+
+
+
 const app = initializeApp(firebaseConfig);
 export const firestore = getFirestore(app);
 export const provider = new GoogleAuthProvider();

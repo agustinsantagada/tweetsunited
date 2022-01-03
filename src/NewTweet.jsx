@@ -6,7 +6,7 @@ import { getTweetsByUser }  from "./FirebaseActions"
 
 export default function NewPost() {
 
-  const { user, text, setText, setTweets, setTweetsUser } = useContext(AppContext);
+  const { user, text, nickName, setText, setTweets, setTweetsUser } = useContext(AppContext);
 
   const fetchDataUser = async () => {
     const tweetsAqui = await getTweetsByUser(user.uid);
@@ -24,8 +24,10 @@ export default function NewPost() {
     e.preventDefault();
     await addTweet({
       user: user.uid,
+      // id: user,
       fecha: new Date(), 
       displayName: user.displayName,
+      nickName: nickName,      
       text: text
       });
     setText("");

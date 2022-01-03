@@ -1,11 +1,11 @@
 import React from "react";
-import Autenticator from "./Autenticator.jsx";
+import LaunchPage from "./LaunchPage.jsx";
 
 function App() {
 
   return (
     <div className="App">
-     <Autenticator />
+     <LaunchPage />
     </div>
   );
 }

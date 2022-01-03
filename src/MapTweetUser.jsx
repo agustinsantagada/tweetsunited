@@ -17,7 +17,7 @@ const MapTweetUser = () => {
 
   useEffect(()=> {
     fetchData();
-  }, [])
+  }, [user])
 
   const handleDelete = async (tweet) => {
     await removeTweets(tweet);
