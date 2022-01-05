@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code&family=Press+Start+2P&display=swap");
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+.UserBar{
+    width:100%;
+    height:2em;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.UserBar-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 30em;
+    height: 1em;
+    margin-top: 1em;
+}
+
+.UserBar-photo{
+    width: 2em;
+    height: 2em;
+    clip-path: circle(50% at 50% 50%);
+    /* margin-left: 6em;  */
+}
+
+.UserBar-button{
+    clip-path: circle(50% at 50% 47%);
+    width: 2.5em;
+    height: 2.5em;
+    background-color: red;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    margin-left: 8em;
+}
+
+.UserBar-logo{
+    width: 3em;
+    height: 3em;
+    margin-left: 2em; 
+}
+
+.UserBar-text{
+    width: 8em;
+    height: 8em;
+    margin-right: 4em; 
+}

@@ -24,15 +24,12 @@
   align-items: center;
 }
 
-.np-btn {
-    color: white;
-    background: #4285F4;
-    border-radius: 5px 0px 0px 5px;
-    style: none;
-    width: 376px;
-    height: 58px;
-    font-size: 18px;
-}
+/* .np-div{
+    display: flex;
+    justify-content: flex-start;
+} */
+
+
 
 .np-tlt{
     font-family: "Press Start 2P", cursive;
@@ -45,8 +42,7 @@
     font-family: "Press Start 2P", cursive;
     text-transform: uppercase;
     font-size: 22px;
-    color: green;
-    padding: 2em;
+    color: red;
 }
 
 .np-tltl{

@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { AppContext } from "./AppContext"
 import ColorPicker from "./ColorPicker"
-import ColorText from "./ColorText"
 import "./Styles/NickName.css"
 
 export default function NickName() {
@@ -11,7 +10,7 @@ export default function NickName() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (nick.length > 3) {
-    setNick(nick);
+      setNickName(nick);
   } else {
       alert ("Ingresa un nickname correcto")
       return false
@@ -27,13 +26,13 @@ export default function NickName() {
       <form className="np-txtarea">
         <textarea
           type="text"
+          className="np-txtarea"
           placeholder="Type your Nickname"
           value={nick}
           onChange={(e) => {setNick(e.target.value)}}></textarea>
       </form>
       <div className="np-tlt-color" >Select tyour favourite color</div>
       <ColorPicker />
-      <ColorText />
       <button className="np-btn" onClick={handleSubmit}>CONTINUE</button>
       </div>
     </div>

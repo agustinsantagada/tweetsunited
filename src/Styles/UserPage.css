@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code&family=Press+Start+2P&display=swap");
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+.UserPage{
+    width:100%;
+    height:30em;
+}
+
+
+.UserPage-top{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2em;
+}
+
+.UserPage-user{
+    display: flex;
+    justify-content: center; 
+    flex-direction: column;
+    padding-top: 1em;
+}
+
+.UserPage-photo{
+    width: 6em;
+    height: 6em;
+    margin-left: 5em;
+    clip-path: circle(50% at 50% 50%); 
+    border-radius: 50%;
+} 
+
+.UserPage-nick{
+    font-family: "Press Start 2P", cursive;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    color: white;
+    padding: 2em;
+}
+
+.UserPage-logout{
+    font-family: "Press Start 2P", cursive;
+    text-transform: uppercase;
+    font-size: 0.2em;
+    color: white;
+    padding: 2em;
+    background-color: #F50D5A;
+    border: none;
+}
+
+.UserPage-back{
+    font-family: "Press Start 2P", cursive;
+    text-transform: uppercase;
+    font-size: 0.2em;
+    color: white;
+    padding: 2em;
+    background: none;
+    border: none;
+
+}

@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code&family=Press+Start+2P&display=swap");
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+.MapTweet-tweet{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1.5em;
+    border-bottom: 0.1em solid;
+    border-color: #60265B;
+
+}
+
+.MapTweet-photo{
+    width: 2em;
+    height: 2em;
+    clip-path: circle(50% at 50% 50%); 
+}
+
+.tweet-box{
+    width: 12em;
+    height: auto;
+    margin-left: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;   
+
+}
+
+.tweet-top{
+    width: 120%;
+    height: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex start;
+    align-items: center;
+}
+
+.tweet-top-date-user{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.tweet-user{
+    font-family: "Press Start 2P", cursive;
+    text-transform: uppercase;
+    font-size: 0.5em;
+    color: #2E132C;
+    margin-left: 0.5em;
+    margin-top: 0.2em;
+    padding: .3em;
+    border-radius: .2em;
+}
+
+.tweet-date{
+    font-family: "Fira Code", sans-serif;
+    color: white; 
+    font-size: 0.5em;
+    padding-left:1em;
+    margin-top: 0.2em;
+}
+
+.tweet-delete{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    margin-left: 9em;
+    color: white;
+}
+
+.tweet-box-container{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.tweet-txt{
+    height: auto;
+    font-family: "Fira Code", sans-serif;
+    color: white; 
+    font-size: 0.8em;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5em;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;    
+}
+
+.tweet-bottom{
+    display: flex;
+    flex-direction: row;
+}
+
+.tweet-likes-button{
+    font-family: "Fira Code", sans-serif;
+    color: white;
+    font-size: 1em;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    margin-left: 0.5em;
+    margin-top: -0.1em;  
+}
+
+.cont {
+    font-family: "Fira Code", sans-serif;
+    font-size: 0.8em;
+    margin-left: 0.5em;
+    color: white;
+  }
+ 
+  .cont2 {
+    font-family: "Fira Code", sans-serif;
+    font-size: 0.8em;
+    margin-left: 0.5em;
+    color: white;
+  }

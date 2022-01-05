@@ -2,8 +2,10 @@
     display: inline-block;
     width: 3em;
     height: 3em;
-    margin: 0.55em;
+    margin-right: 1.2em;
     border: 1px solid black;
+    margin-bottom: 2em;
+    margin-left: -0.02em;
   }
 
   .color:hover{

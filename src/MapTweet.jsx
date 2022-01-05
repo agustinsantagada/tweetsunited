@@ -1,14 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { AppContext } from "./AppContext"
 import { useContext } from "react";
 import { getTweets }  from "./FirebaseActions"
 import { removeTweets }  from "./FirebaseActions"
 import { updateTweets }  from "./FirebaseActions"
+import "./Styles/MapTweets.css"
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
+import FavoriteIcon from '@material-ui/icons/Favorite'
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline'
 
 
 const MapTweet = () => {
 
-  const { id, user, tweets, setTweets } = useContext(AppContext)
+  const { color, user, tweets, setTweets, nickName } = useContext(AppContext)
+
+  const [style, setStyle] = useState("cont2");
 
   const fetchData = async () => {
     const tweetsAqui = await getTweets();
@@ -42,38 +48,58 @@ const MapTweet = () => {
       fetchData();
   };
 
+  const changeStyle = () => {
+    setStyle("cont2");
+
+  };
+
     return (
       <div className="App">
         <div>
-          <h2>Listado de tweets</h2>
           {tweets.map((tweet, index) => {
-            console.log(user)
             return (
-              <div key={tweet.id}>
-                <h3>{tweet.displayName}</h3>
-                <p>{tweet.text}</p>
-                <p>{new Date(tweet.fecha?.seconds * 1000).toLocaleString("en")}</p>
-                <h1>{tweet.counter}</h1>
-                
-                {tweet.user === user.uid ? 
-                <button onClick={()=>{handleDelete(tweet)}}>Borrar</button>  
-                : null }  
-          
-                {!tweet.counter && (
-                <button onClick={()=>{handleLike(tweet)}}>
-                  <span role="img" aria-label="favorito">🧡</span>
-                </button>
-                )}
-               {tweet.counter > 0 && (
-                  <button onClick={() => {handleUnLike(tweet)}}>
-                    <span role="img" aria-label="No Favorito">🖤</span>
-                    UnLike
-                  </button>
-                )}
+              <div className="MapTweet-tweet" key={tweet.id}>
+                <div className="MapTweet-photo-container">
+                  <img className="MapTweet-photo" src={user.photoURL} width="50px" alt="" />
+                </div>
+               <div className="tweet-box">
+                <div className="tweet-top"> 
+                <div className="tweet-top-date-user"> 
+                  <h3 className="tweet-user" style={{
+                    backgroundColor: color.hex}}>{nickName}</h3>
+                  <h3 className="tweet-date" >{new Date(tweet.fecha?.seconds * 1000)
+                  .toLocaleDateString(undefined, {
+                    month: 'short',
+                    day:   'numeric',
+                })}</h3>
+                </div>
+                  {tweet.user === user.uid ? 
+                      <button className="tweet-delete" onClick={()=>{handleDelete(tweet)}}><DeleteOutlineIcon style={{ fontSize: 12 }}/></button>  
+                      : null }  
+                </div>
+                <div className="tweet-box-container">
+                  <p className="tweet-txt">{tweet.text}</p>
+                </div>
+              <div className="tweet-bottom">   
+                    <h1 className={style}>{tweet.counter}</h1>
+                    {!tweet.counter && (
+                    <button className="tweet-likes-button" onClick={()=>{handleLike(tweet)}}>
+                      <span role="img" aria-label="favorito"><FavoriteBorderIcon style={{ fontSize: 12 }}/></span>
+                    </button>
+                    )}
+                  {tweet.counter > 0 && (
+                      <button className="tweet-likes-button" onClick={() => {handleUnLike(tweet)}}>
+                        <span role="img" aria-label="No Favorito"><FavoriteIcon style={{ fontSize: 12, fill: "red"  }}/></span>
+                      </button>
+                    )}
               </div>
+                </div>
+              </div>
+
             );
           })}
         </div>
+        
       </div>
     );
   }

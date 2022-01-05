@@ -7,6 +7,7 @@ import {
     deleteDoc,
     updateDoc,
     query,
+    orderBy,
     where
   } from "firebase/firestore";
   const tweetsCollection = collection(firestore, "tweets")
@@ -14,7 +15,8 @@ import {
   
 export const getTweets = async () => {
       const tweetsCreation = [];
-      const tweetsSnapshot = await getDocs(tweetsCollection);
+      const tweetsSnapshot = await getDocs(query(tweetsCollection, orderBy('fecha', "desc")))
+      // const tweetsSnapshot = await getDocs(tweetsCollection);
       tweetsSnapshot.forEach((tweet) => {
         tweetsCreation.push({...tweet.data(), id: tweet.id});
       });
@@ -40,7 +42,20 @@ export const updateTweets = async (tweet, upd ) => {
 
 export const getTweetsByUser = async (userId) => {
   const tweets = []
-  const filteredTweetsCollection = query(tweetsCollection, where("user", "==", userId));
+  const filteredTweetsCollection = query(tweetsCollection, where("user", "==", userId), orderBy("date"));
+  const filteredTweetsSnapshot = await getDocs(filteredTweetsCollection);
+  filteredTweetsSnapshot.forEach((tweet) => {
+    if (tweet.data().user === userId) {
+      tweets.push({...tweet.data(), user: tweet.id});
+    }
+  });
+  return tweets;
+};
+
+
+export const getTweetsByUserLike = async (userId) => {
+  const tweets = []
+  const filteredTweetsCollection = query(tweetsCollection, where("user", "==", userId), where("favourite", "==", true), orderBy("date"));
   const filteredTweetsSnapshot = await getDocs(filteredTweetsCollection);
   filteredTweetsSnapshot.forEach((tweet) => {
     if (tweet.data().user === userId) {

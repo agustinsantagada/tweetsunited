@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AppContext } from "./AppContext"
 import { getTweets }  from "./FirebaseActions"
 import { addTweet }  from "./FirebaseActions"
 import { getTweetsByUser }  from "./FirebaseActions"
+import "./Styles/NewTweet.css"
 
 export default function NewPost() {
 
@@ -16,7 +17,6 @@ export default function NewPost() {
 
   const fetchData = async () => {
     const tweetsAqui = await getTweets();
-    // console.log("Viene el NEW USER", user.uid)
     setTweets(tweetsAqui)
   }
 
@@ -24,11 +24,10 @@ export default function NewPost() {
     e.preventDefault();
     await addTweet({
       user: user.uid,
-      // id: user,
       fecha: new Date(), 
       displayName: user.displayName,
       nickName: nickName,      
-      text: text
+      text: text      
       });
     setText("");
     fetchData();
@@ -36,15 +35,21 @@ export default function NewPost() {
   };
 
   return (
-    <div>
-      <form>
+    <div className="NewTweet-container">
+      <div>
+      <img className="NewTweet-photo" src={user.photoURL} width="50px" alt="" />
+      </div> 
+      <div className="NewTweet-form">
+      <form className="NewTweet-txtarea">
         <textarea
+          className="NewTweet-txtarea"
           type="text"
           placeholder="Mensaje de texto"
           value={text}
           onChange={(tweet) => {setText(tweet.target.value)}}></textarea>
-        <button onClick={handleSubmit}>POST!</button>
       </form>
+      <button className="NewTweet-button" onClick={handleSubmit}>POST</button>
+      </div>
     </div>
   );
 }

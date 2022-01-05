@@ -45,14 +45,16 @@
     text-transform: uppercase;
     font-size: 22px;
     color: white;
-    padding: 2em;
+    margin-left: -2em;
+    
 }
 
 .np-tlt-user{
     font-family: "Press Start 2P", cursive;
     font-size: 22px;
     color: red;
-    padding: 2em;
+    margin-top: -1.5em;
+    padding-bottom: 2em;
 }
 
 .np-div{
@@ -60,19 +62,19 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: left;
-   
 }
 
 .np-tltl{
     font-family: "Fira Code", sans-serif;
     color: white;
-    padding: 1em;
+    padding-bottom: 2em;
 }
 
 .np-tlt-color{
     font-family: "Fira Code", sans-serif;
-    color: white;
-    padding: 2em;    
+    color: white; 
+    padding-bottom: 2em; 
+    margin-left: -2em;
 }
 
 .logo{
@@ -83,15 +85,25 @@
 
 .np-btn{
     margin: 50;
-    background: #red;
-    -webkit-appearance: none;
     appearance: none;
+    -webkit-appearance: none;
 }
 
 .np-txtarea{
-    padding: 2em;
+    width: 28em;
+    height: 10em;
+    padding: 1em;
     background: #150714;
     style: none;
-    -webkit-appearance: none;
+    font-family: "Fira Code", sans-serif;
+    border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    resize: none; /*remove the resize handle on the bottom right*/
+    color: white;
+    font-size: 1em;
 }
 
