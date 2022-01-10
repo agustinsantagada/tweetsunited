@@ -1,21 +1,34 @@
 import React, { useContext } from "react";
 import { AppContext } from "./AppContext"
 import ColorPicker from "./ColorPicker"
+import { BrowserRouter, Route, Link, Switch, useHistory } from "react-router-dom";
 import "./Styles/NickName.css"
 
 export default function NickName() {
 
   const { user, nick, setNick, setNickName } = useContext(AppContext);
+  const history = useHistory()
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (nick.length > 3) {
-      setNickName(nick);
-  } else {
-      alert ("Ingresa un nickname correcto")
+    if
+    (nick === undefined )  {
+      alert ("ERROR") 
+  } 
+  else if 
+        (nick.length >= 3 )  {
+          setNickName(nick);
+          history.push("/home")
+  } 
+  else {
+    alert ("Ingresa un nickname correcto")
       return false
+
   }
 }
+
+
+
 
   return (
     <div className="np-bkg">
@@ -23,17 +36,21 @@ export default function NickName() {
       <div className="np-div">
       <h1 className="np-tlt">Bienvenido</h1>
       <div className="np-tlt-user">{user.displayName}</div>
-      <form className="np-txtarea">
-        <textarea
+      <form className="np-txtarea" >
+         <input
           type="text"
           className="np-txtarea"
           placeholder="Type your Nickname"
+          name="firstName"
           value={nick}
-          onChange={(e) => {setNick(e.target.value)}}></textarea>
+          onChange={(e) => {setNick(e.target.value)}}>
+           </input> 
       </form>
       <div className="np-tlt-color" >Select tyour favourite color</div>
       <ColorPicker />
-      <button className="np-btn" onClick={handleSubmit}>CONTINUE</button>
+        <Link path="/home" className="np-btn" onClick={handleSubmit}>
+          CONTINUE
+          </Link>
       </div>
     </div>
   );

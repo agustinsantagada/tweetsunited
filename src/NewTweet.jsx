@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "./AppContext"
 import { getTweets }  from "./FirebaseActions"
 import { addTweet }  from "./FirebaseActions"
@@ -26,7 +26,9 @@ export default function NewPost() {
       user: user.uid,
       fecha: new Date(), 
       displayName: user.displayName,
-      nickName: nickName,      
+      nickName: nickName,
+      favourite: true,
+      counter: 0,      
       text: text      
       });
     setText("");
@@ -53,17 +55,3 @@ export default function NewPost() {
     </div>
   );
 }
-
-
- // if (text.length > 3 && text.length > 3) {
-    // console.log("Hola", user, text)
-    // const tweetsCollection = collection(firestore, "tweets");
-    // addDoc(tweetsCollection, {
-    //     fecha: new Date(),
-    //     user: user.displayName,
-    //     text: text
-    // }).then((resultado) => {
-    //     fetchData()
-    //     console.log("ENTRANDO")
-    // });
-    // }

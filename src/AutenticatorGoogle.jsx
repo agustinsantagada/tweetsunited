@@ -2,6 +2,7 @@ import "./Styles/AuthGoogle.css"
 import React, { useEffect, useContext } from "react";
 import { AppContext } from "./AppContext";
 import  BoxedUser  from "./UserPage";
+import { useHistory } from "react-router-dom";
 import GoogleButton from 'react-google-button'
 import { 
   getAuth, 
@@ -10,12 +11,14 @@ import {
   GoogleAuthProvider,  
   setPersistence, 
   browserLocalPersistence } from "firebase/auth";
+  
 
 const AutenticatorGoogle = () => {
 
   const { setUserLogin, user, setUser, error } = useContext(AppContext);
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
+  const history = useHistory()
 
 
   useEffect(() => {
@@ -31,8 +34,7 @@ const values = () => {
       .then((result) => {
         const user = result.user;
         setUser(result.user);
-        console.log("PRUEBA RESULT", result)
-        console.log("el usuario se logeo", user);
+        history.push("/")
       })
   };
 
@@ -40,6 +42,8 @@ const values = () => {
     signOut(auth).then(() => {
       setUser(undefined);
       setUserLogin(undefined);
+      history.push("/")
+      
     });
   };
   

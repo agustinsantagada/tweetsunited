@@ -29,8 +29,6 @@
     justify-content: flex-start;
 } */
 
-
-
 .np-tlt{
     font-family: "Press Start 2P", cursive;
     text-transform: uppercase;
@@ -59,11 +57,14 @@
 
 .np-btn{
     margin: 50;
+    padding: 1.1em;
     font-family: "Press Start 2P", cursive;
     background: #00DA76;
     width: 25em;
     -webkit-appearance: none;
     appearance: none;
+    text-decoration: none;
+    text-align: center;
 }
 
 .np-txtarea{

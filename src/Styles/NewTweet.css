@@ -32,10 +32,11 @@
     flex-direction: column;
     justify-content: flex-end;
     padding-left: 1em;
+    margin-right: 1em
   }
 
   .NewTweet-txtarea{
-    width: 15em;
+    width: 16em;
     height: 5em;
     padding: .2em;
     background: #2F112D;
@@ -53,6 +54,7 @@
     overflow-wrap: break-word;
     word-wrap: break-word;
     hyphens: auto; 
+    
 }
 
 .NewTweet-button{

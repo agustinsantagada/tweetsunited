@@ -1,22 +1,34 @@
 import React, {useContext} from "react";
+import { Link } from "react-router-dom";
 import { AppContext } from "./AppContext";
+import { logout }  from "./FirebaseActions"
+import { useHistory } from 'react-router-dom'
 import "./Styles/UserPage.css"
 
-const UserPage = ({ photoURL, displayName, logout }) => {
+const UserPage = ({ displayName }) => {
 
-  const { user, color } = useContext(AppContext)
+  const { user, color, nickName, setUser } = useContext(AppContext)
+  const history = useHistory()
+
+  const handleLogout = async () => {
+    history.push('/')
+    await logout();
+    setUser({})
+  }
 
   return (
     <div className="UserPage">
       <div className="UserPage-top">
-        <button className="UserPage-back">Back</button>
-        <button className="UserPage-logout" onClick={() => { logout() }} >
+        <Link to="/home" className="UserPage-back">Back</Link>
+        <Link to="/" className="UserPage-logout" onClick={() => { handleLogout() }} >
           Logout
-        </button>
+        </Link>
       </div>
-      <div className="UserPage-user">
-        <img className="UserPage-photo" src={user.photoURL} width="50px" alt={displayName} />
-        <h2 style={{ backgroundColor: color }} className="UserPage-nick">{user.displayName}</h2>
+      <div className="UserPage-user-photo" style={{backgroundColor: color.hex}}>
+        <img className="UserPage-photo"  src={user.photoURL}  alt={displayName} />
+      </div>
+      <div className="UserPage-user" style={{borderColor: color.hex}}>
+        <h2 style={{backgroundColor: color.hex}} className="UserPage-nick">{nickName}</h2>
       </div>
      </div>
   );

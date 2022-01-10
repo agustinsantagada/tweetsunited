@@ -4,10 +4,10 @@ import { useContext } from "react";
 import { getTweets }  from "./FirebaseActions"
 import { removeTweets }  from "./FirebaseActions"
 import { updateTweets }  from "./FirebaseActions"
-import "./Styles/MapTweets.css"
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline'
+import "./Styles/MapTweets.css"
 
 
 const MapTweet = () => {
@@ -46,11 +46,6 @@ const MapTweet = () => {
         typeof tweet.counter === "number" ? tweet.counter - 1 : 1
     })
       fetchData();
-  };
-
-  const changeStyle = () => {
-    setStyle("cont2");
-
   };
 
     return (
@@ -95,11 +90,9 @@ const MapTweet = () => {
               </div>
                 </div>
               </div>
-
             );
           })}
         </div>
-        
       </div>
     );
   }

@@ -7,38 +7,59 @@
   }
 
 .UserPage{
-    width:100%;
-    height:30em;
+    width:100vw;
+    height:15em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    background: #150714;
+    padding-bottom: 2em;
 }
 
 
 .UserPage-top{
     display: flex;
-    justify-content: space-between;
-    padding-top: 2em;
+    width: 45%;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 1em;
+    margin-left: 2em;
+
 }
 
 .UserPage-user{
     display: flex;
     justify-content: center; 
     flex-direction: column;
+    align-items: center;
     padding-top: 1em;
+}
+
+.UserPage-user-photo{
+    width: 7em;
+    height: 7em;
+    clip-path: circle(48% at 50% 50%);
+ 
 }
 
 .UserPage-photo{
     width: 6em;
     height: 6em;
-    margin-left: 5em;
-    clip-path: circle(50% at 50% 50%); 
-    border-radius: 50%;
+    clip-path: circle(50% at 50% 50%);
+    margin-top: .5em;
+    margin-left: .5em;
 } 
 
 .UserPage-nick{
     font-family: "Press Start 2P", cursive;
     text-transform: uppercase;
     font-size: 0.8em;
-    color: white;
-    padding: 2em;
+    color: #150714;
+    margin-top: 1em;
+    padding: .5em;
+    border-radius: .1em;
 }
 
 .UserPage-logout{
@@ -49,6 +70,7 @@
     padding: 2em;
     background-color: #F50D5A;
     border: none;
+    border-radius: .5em;
 }
 
 .UserPage-back{
@@ -56,8 +78,8 @@
     text-transform: uppercase;
     font-size: 0.2em;
     color: white;
-    padding: 2em;
+    margin: 0em;
     background: none;
     border: none;
-
+    text-decoration: none;
 }

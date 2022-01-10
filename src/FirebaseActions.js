@@ -1,4 +1,8 @@
 import { firestore } from "./Firebase";
+import { 
+    getAuth, 
+    signOut
+} from "firebase/auth";
 import {
     collection,
     doc,
@@ -10,7 +14,9 @@ import {
     orderBy,
     where
   } from "firebase/firestore";
+  
   const tweetsCollection = collection(firestore, "tweets")
+  const auth = getAuth();
   
   
 export const getTweets = async () => {
@@ -34,15 +40,32 @@ export const removeTweets = async (tweet) => {
     return delTweet;
 };
 
+export const removeTweetsLikes = async (tweet) => {
+  const postDoc = doc(tweetsCollection, tweet.user)
+  const delTweet = await deleteDoc(postDoc);
+  return delTweet;
+};
+
 export const updateTweets = async (tweet, upd ) => {
   const postDoc = doc(tweetsCollection, tweet.id)
   const updTweet = await updateDoc(postDoc, upd)
   return updTweet;
 };
 
+export const updateTweetsLike = async (tweet, upd ) => {
+  const postDoc = doc(tweetsCollection, tweet.user)
+  const updTweet = await updateDoc(postDoc, upd)
+  return updTweet;
+};
+
+export const logout = async (tweets) => {
+	await signOut(auth);
+  return tweets;
+};
+
 export const getTweetsByUser = async (userId) => {
   const tweets = []
-  const filteredTweetsCollection = query(tweetsCollection, where("user", "==", userId), orderBy("date"));
+  const filteredTweetsCollection = query(tweetsCollection,where("user", "==", userId));
   const filteredTweetsSnapshot = await getDocs(filteredTweetsCollection);
   filteredTweetsSnapshot.forEach((tweet) => {
     if (tweet.data().user === userId) {
@@ -53,9 +76,10 @@ export const getTweetsByUser = async (userId) => {
 };
 
 
-export const getTweetsByUserLike = async (userId) => {
+export const getTweetsByLikes = async (userId) => {
   const tweets = []
-  const filteredTweetsCollection = query(tweetsCollection, where("user", "==", userId), where("favourite", "==", true), orderBy("date"));
+  const filteredTweetsCollection = query(tweetsCollection,where("counter", ">=", 1));
+  // const filteredTweetsCollection = query(tweetsCollection, where("user", "==", userId));
   const filteredTweetsSnapshot = await getDocs(filteredTweetsCollection);
   filteredTweetsSnapshot.forEach((tweet) => {
     if (tweet.data().user === userId) {

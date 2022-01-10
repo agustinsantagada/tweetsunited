@@ -18,6 +18,7 @@ export const AppProvider = (props) => {
     const [error, setError] = useState("");
     const [tweets, setTweets] = useState([]);
     const [tweetsUser, setTweetsUser] = useState([]);
+    const [tweetsLikes, setTweetsLikes] = useState([]);
     const [text, setText] = useState("");
     const [fecha, setFecha] = useState("");
     const [nickName, setNickName] = useState();
@@ -45,6 +46,8 @@ export const AppProvider = (props) => {
             setTweets,
             tweetsUser,
             setTweetsUser,
+            tweetsLikes,
+            setTweetsLikes,
             nickName,
             setNickName,
             nick,
