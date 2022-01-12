@@ -1,19 +1,35 @@
 import React, { useContext } from "react";
 import { AppContext } from "./AppContext"
 import ColorPicker from "./ColorPicker"
-import { BrowserRouter, Route, Link, Switch, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import Swal from 'sweetalert2'
 import "./Styles/NickName.css"
+
 
 export default function NickName() {
 
   const { user, nick, setNick, setNickName } = useContext(AppContext);
   const history = useHistory()
 
+  const showAlert = () => {
+    Swal.fire({
+      title: "Please, enter a valid Nickname",
+      background: '#2E132C',
+      color: 'white',
+      icon: "error",
+      confirmButtonColor: "#F50D5A",
+      customClass: {
+        popup: "format-pre"
+      }
+    });
+  };
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if
     (nick === undefined )  {
-      alert ("ERROR") 
+      showAlert();
   } 
   else if 
         (nick.length >= 3 )  {
@@ -21,9 +37,8 @@ export default function NickName() {
           history.push("/home")
   } 
   else {
-    alert ("Ingresa un nickname correcto")
+      showAlert();
       return false
-
   }
 }
 

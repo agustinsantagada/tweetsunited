@@ -4,11 +4,12 @@ import MapTweet from "./MapTweet"
 import NewTweet from "./NewTweet"
 import UserBar from "./UserBar"
 import ProfilePage from "./ProfilePage"
+import './index.css';
 
 export default function HomePage () {
     return (
       <BrowserRouter>
-        <div>
+        <div className="HomePage">
           <Switch>
             <Route component = {UserBar} path = '/home'  exact/>
             <Route component = {ProfilePage} path = '/ProfilePage'  exact/>

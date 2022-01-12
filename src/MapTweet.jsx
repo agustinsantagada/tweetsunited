@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
 import { AppContext } from "./AppContext"
 import { useContext } from "react";
 import { getTweets }  from "./FirebaseActions"
 import { removeTweets }  from "./FirebaseActions"
 import { updateTweets }  from "./FirebaseActions"
+import NotFound from "./NotFound"
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline'
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 import "./Styles/MapTweets.css"
-
 
 const MapTweet = () => {
 
   const { color, user, tweets, setTweets, nickName } = useContext(AppContext)
 
   const [style, setStyle] = useState("cont2");
+  const [loading, setLoading] = useState(false)
 
   const fetchData = async () => {
     const tweetsAqui = await getTweets();
@@ -34,20 +36,24 @@ const MapTweet = () => {
     await updateTweets(tweet, {
       favourite: true,
       counter:
-        typeof tweet.counter === "number" ? tweet.counter + 1 : 1
+      typeof tweet.counter === "number" ? tweet.counter + 1 : 1
     })
       fetchData();
   };
 
   const handleUnLike = async (tweet) => {
     await updateTweets(tweet, {
-      favourite: true,
+      favourite: false,
       counter:
-        typeof tweet.counter === "number" ? tweet.counter - 1 : 1
+      tweet.user === user.uid && typeof tweet.counter === "number" ? tweet.counter - 1 : 2
     })
       fetchData();
   };
 
+  if (loading === true) {
+  return ( 
+    <div className="spinner"></div>
+  ) } else if (loading ===  false) {
     return (
       <div className="App">
         <div>
@@ -55,13 +61,13 @@ const MapTweet = () => {
             return (
               <div className="MapTweet-tweet" key={tweet.id}>
                 <div className="MapTweet-photo-container">
-                  <img className="MapTweet-photo" src={user.photoURL} width="50px" alt="" />
+                  <img className="MapTweet-photo" src={tweet.image} width="50px" alt="" />
                 </div>
                <div className="tweet-box">
                 <div className="tweet-top"> 
                 <div className="tweet-top-date-user"> 
                   <h3 className="tweet-user" style={{
-                    backgroundColor: color.hex}}>{nickName}</h3>
+                    backgroundColor: tweet.color.hex}}>{tweet.nickName}</h3>
                   <h3 className="tweet-date" >{new Date(tweet.fecha?.seconds * 1000)
                   .toLocaleDateString(undefined, {
                     month: 'short',
@@ -77,12 +83,12 @@ const MapTweet = () => {
                 </div>
               <div className="tweet-bottom">   
                     <h1 className={style}>{tweet.counter}</h1>
-                    {!tweet.counter && (
+                    {!tweet.counter &&  (
                     <button className="tweet-likes-button" onClick={()=>{handleLike(tweet)}}>
                       <span role="img" aria-label="favorito"><FavoriteBorderIcon style={{ fontSize: 12 }}/></span>
                     </button>
                     )}
-                  {tweet.counter > 0 && (
+                  {tweet.counter > 0 &&  (
                       <button className="tweet-likes-button" onClick={() => {handleUnLike(tweet)}}>
                         <span role="img" aria-label="No Favorito"><FavoriteIcon style={{ fontSize: 12, fill: "red"  }}/></span>
                       </button>
@@ -93,8 +99,9 @@ const MapTweet = () => {
             );
           })}
         </div>
-      </div>
-    );
+        </div>
+        )
+      } else { return (<NotFound/>) }
   }
 
 export default MapTweet

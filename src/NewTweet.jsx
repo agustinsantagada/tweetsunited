@@ -7,7 +7,7 @@ import "./Styles/NewTweet.css"
 
 export default function NewPost() {
 
-  const { user, text, nickName, setText, setTweets, setTweetsUser } = useContext(AppContext);
+  const { user, text, nickName, color, setText, setTweets, setTweetsUser } = useContext(AppContext);
 
   const fetchDataUser = async () => {
     const tweetsAqui = await getTweetsByUser(user.uid);
@@ -29,7 +29,9 @@ export default function NewPost() {
       nickName: nickName,
       favourite: true,
       counter: 0,      
-      text: text      
+      text: text,
+      image: user.photoURL,
+      color: color
       });
     setText("");
     fetchData();

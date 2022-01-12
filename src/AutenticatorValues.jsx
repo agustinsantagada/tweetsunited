@@ -9,7 +9,6 @@ export default function AutenticatorValues() {
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
   
-
 const values = () => {
 
   signInWithPopup(auth, provider)

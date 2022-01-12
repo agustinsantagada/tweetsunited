@@ -14,6 +14,7 @@ const UserPage = ({ displayName }) => {
     history.push('/')
     await logout();
     setUser({})
+    window.location.reload(true);
   }
 
   return (

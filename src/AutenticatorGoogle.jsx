@@ -23,7 +23,7 @@ const AutenticatorGoogle = () => {
 
   useEffect(() => {
     setPersistence(auth, browserLocalPersistence).then(() => {
-      // console.log(auth.currentUser);
+      console.log(auth.currentUser);
       setUserLogin(auth.currentUser);
     });
   }, );
@@ -53,6 +53,10 @@ const values = () => {
         <div className="gSignInWrapper">
           <GoogleButton
             className="google-btn"
+            style={{ 
+                width:410,
+                height:50  
+              }}
             onClick={() => {
               values();
             }}

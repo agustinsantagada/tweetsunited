@@ -71,6 +71,7 @@
     background-color: #F50D5A;
     border: none;
     border-radius: .5em;
+    text-decoration: none;
 }
 
 .UserPage-back{
@@ -79,6 +80,7 @@
     font-size: 0.2em;
     color: white;
     margin: 0em;
+    padding-right:6em;
     background: none;
     border: none;
     text-decoration: none;
