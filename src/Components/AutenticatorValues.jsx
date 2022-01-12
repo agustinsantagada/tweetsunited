@@ -1,6 +1,6 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "@firebase/auth";
 import React, { useContext } from "react";
-import { AppContext } from "./AppContext";
+import { AppContext } from "./Context/AppContext";
 import  BoxedUser  from "./BoxedUser";
 
 export default function AutenticatorValues() {

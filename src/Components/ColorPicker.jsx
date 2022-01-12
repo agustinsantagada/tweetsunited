@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import "./Styles/ColorPicker.css";
-import { colors } from "./AppContext";
-import { AppContext } from "./AppContext";
+import { colors } from "../Context/AppContext";
+import { AppContext } from "../Context/AppContext";
+import "../Styles/ColorPicker.css";
 
 function ColorPicker() {
 

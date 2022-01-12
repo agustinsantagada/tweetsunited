@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react"
-import { AppContext } from "./AppContext"
+import { AppContext } from "../Context/AppContext"
 import { useContext } from "react";
-import { getTweets }  from "./FirebaseActions"
-import { removeTweets }  from "./FirebaseActions"
-import { updateTweets }  from "./FirebaseActions"
-import NotFound from "./NotFound"
+import { getTweets }  from "../Hooks/FirebaseActions"
+import { removeTweets }  from "../Hooks/FirebaseActions"
+import { updateTweets }  from "../Hooks/FirebaseActions"
+import NotFound from "../Components/NotFound"
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline'
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
-import "./Styles/MapTweets.css"
+import "../Styles/MapTweets.css"
 
 const MapTweet = () => {
 
-  const { color, user, tweets, setTweets, nickName } = useContext(AppContext)
+  const { user, tweets, setTweets } = useContext(AppContext)
 
   const [style, setStyle] = useState("cont2");
   const [loading, setLoading] = useState(false)
@@ -49,6 +49,7 @@ const MapTweet = () => {
     })
       fetchData();
   };
+
 
   if (loading === true) {
   return ( 

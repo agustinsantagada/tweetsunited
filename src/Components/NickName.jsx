@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { AppContext } from "./AppContext"
-import ColorPicker from "./ColorPicker"
+import { AppContext } from "../Context/AppContext"
 import { Link, useHistory } from "react-router-dom";
+import ColorPicker from "./ColorPicker"
 import Swal from 'sweetalert2'
-import "./Styles/NickName.css"
+import "../Styles/NickName.css"
 
 
 export default function NickName() {

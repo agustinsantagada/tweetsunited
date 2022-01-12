@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { AppContext } from "./AppContext"
-import LaunchPage from "./LaunchPage.jsx";
+import {AppContext} from './AppContext.jsx'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import HomePage from "./HomePage.jsx";
-import NickPage from "./NickPage.jsx";
+import LaunchPage from "../Pages/LaunchPage.jsx"; 
+import HomePage from "../Pages/HomePage.jsx";
+import NickPage from "../Pages/NickPage.jsx";
 
 function App() {
 

@@ -1,18 +1,18 @@
 import React, { useEffect,useState } from "react";
-import { AppContext } from "./AppContext"
+import { AppContext } from "../Context/AppContext"
 import { useContext } from "react";
-import { getTweetsByLikes }  from "./FirebaseActions"
-import { removeTweetsLikes }  from "./FirebaseActions"
-import { updateTweetsLike }  from "./FirebaseActions"
-import NotFound from "./NotFound"
+import { getTweetsByLikes }  from "../Hooks/FirebaseActions"
+import { removeTweetsLikes }  from "../Hooks/FirebaseActions"
+import { updateTweetsLike }  from "../Hooks/FirebaseActions"
+import NotFound from "../Components/NotFound"
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline'
-import "./Styles/MapTweets.css"
+import "../Styles/MapTweets.css"
 
 const MapTweetLikes = () => {
 
-  const { user, tweetsLikes, setTweetsLikes, color, nickName } = useContext(AppContext)
+  const { user, tweetsLikes, setTweetsLikes } = useContext(AppContext)
 
   const [style, setStyle] = useState("cont2");
   const [loading, setLoading] = useState(false)

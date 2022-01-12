@@ -1,9 +1,8 @@
-import "./Styles/AuthGoogle.css"
-import React, { useEffect, useContext } from "react";
-import { AppContext } from "./AppContext";
-import  BoxedUser  from "./UserPage";
-import { useHistory } from "react-router-dom";
 import GoogleButton from 'react-google-button'
+import BoxedUser from "../Pages/UserPage";
+import React, { useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { AppContext } from "../Context/AppContext";
 import { 
   getAuth, 
   signOut,
@@ -11,6 +10,7 @@ import {
   GoogleAuthProvider,  
   setPersistence, 
   browserLocalPersistence } from "firebase/auth";
+import "../Styles/AuthGoogle.css"
   
 
 const AutenticatorGoogle = () => {
@@ -32,7 +32,7 @@ const AutenticatorGoogle = () => {
 const values = () => {
   signInWithPopup(auth, provider)
       .then((result) => {
-        const user = result.user;
+        // const user = result.user;
         setUser(result.user);
         history.push("/")
       })

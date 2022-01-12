@@ -1,10 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import MapTweet from "./MapTweet"
-import NewTweet from "./NewTweet"
-import UserBar from "./UserBar"
-import ProfilePage from "./ProfilePage"
-import './index.css';
+import MapTweet from "../Containers/MapTweet"
+import NewTweet from "../Components/NewTweet"
+import UserBar from "../Pages/UserBar"
+import ProfilePage from "../Pages/ProfilePage"
 
 export default function HomePage () {
     return (

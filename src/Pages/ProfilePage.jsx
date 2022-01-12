@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import UserPage from "./UserPage"
-import MapTweetUser from "./MapTweetUser"
-import MapTweetLikes from "./MapTweetLikes"
-import ProfileBar from "./ProfileBar"
+import MapTweetUser from "../Containers/MapTweetUser"
+import MapTweetLikes from "../Containers/MapTweetLikes"
+import ProfileBar from "../Components/ProfileBar"
 import HomePage from "./HomePage"
 import LaunchPage from "./LaunchPage"
 

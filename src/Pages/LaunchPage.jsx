@@ -1,10 +1,7 @@
-import React, { useContext } from "react";
-import { AppContext } from "./AppContext";
+import React from "react";
 import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import LogInPage  from "./LogInPage"
-import  AutenticatorGoogle  from "./AutenticatorGoogle"
-import  NickPage from "./NickPage"
-import "./Styles/LaunchPage.css"
+import "../Styles/LaunchPage.css"
 
 export default function LaunchPage () {
 

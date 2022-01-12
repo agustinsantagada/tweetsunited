@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { AppContext } from "./AppContext";
-import  AutenticatorGoogle  from "./AutenticatorGoogle"
+import { AppContext } from "../Context/AppContext";
 import { BrowserRouter, Route, Switch } from "react-router-dom"
-import  NickPage from "./NickPage"
-import "./Styles/LaunchPage.css"
+import  AutenticatorGoogle  from "../Components/AutenticatorGoogle"
+import  NickPage from "../Pages/NickPage"
+import "../Styles/LaunchPage.css"
 
 export default function LogInPage () {
 

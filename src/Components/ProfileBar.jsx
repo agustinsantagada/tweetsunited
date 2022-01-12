@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import MapTweet from "./MapTweet"
-import NewTweet from "./NewTweet"
-import UserBar from "./UserBar"
-import ProfilePage from "./ProfilePage"
-import "./Styles/ProfileBar.css"
+import NewTweet from "../Components/NewTweet"
+import MapTweet from "../Containers/MapTweet"
+import UserBar from "../Pages/UserBar"
+import ProfilePage from "../Pages/ProfilePage"
+import "../Styles/ProfileBar.css"
 
 export default function ProfileBar () {
 

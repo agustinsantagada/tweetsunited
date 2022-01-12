@@ -1,9 +1,8 @@
-import App from './App';
+import App from './Context/App';
 import React from "react"
 import ReactDOM from 'react-dom';
-import { AppProvider } from "./AppContext"
-import './index.css';
-
+import { AppProvider } from "./Context/AppContext"
+import './Styles/index.css';
 
 ReactDOM.render(
   <AppProvider>

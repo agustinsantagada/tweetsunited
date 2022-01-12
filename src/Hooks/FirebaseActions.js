@@ -1,4 +1,4 @@
-import { firestore } from "./Firebase";
+import { firestore } from "../Services/Firebase";
 import { 
     getAuth, 
     signOut

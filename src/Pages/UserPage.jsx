@@ -1,9 +1,9 @@
 import React, {useContext} from "react";
 import { Link } from "react-router-dom";
-import { AppContext } from "./AppContext";
-import { logout }  from "./FirebaseActions"
+import { AppContext } from "../Context/AppContext";
+import { logout }  from "../Hooks/FirebaseActions"
 import { useHistory } from 'react-router-dom'
-import "./Styles/UserPage.css"
+import "../Styles/UserPage.css"
 
 const UserPage = ({ displayName }) => {
 

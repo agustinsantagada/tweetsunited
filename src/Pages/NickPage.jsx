@@ -1,10 +1,10 @@
 import React from "react";
-import { AppContext } from "./AppContext"
+import { AppContext } from "../Context/AppContext"
 import { useContext } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import HomePage from "./HomePage"
-import NickName from "./NickName"
-import "./Styles/NickPage.css"
+import HomePage from "../Pages/HomePage"
+import NickName from "../Components/NickName"
+import "../Styles/NickPage.css"
 
 export default function NickPage () {
 

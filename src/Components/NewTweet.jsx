@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { AppContext } from "./AppContext"
-import { getTweets }  from "./FirebaseActions"
-import { addTweet }  from "./FirebaseActions"
-import { getTweetsByUser }  from "./FirebaseActions"
-import "./Styles/NewTweet.css"
+import { AppContext } from "../Context/AppContext"
+import { getTweets }  from "../Hooks/FirebaseActions"
+import { addTweet }  from "../Hooks/FirebaseActions"
+import { getTweetsByUser }  from "../Hooks/FirebaseActions"
+import "../Styles/NewTweet.css"
 
 export default function NewPost() {
 

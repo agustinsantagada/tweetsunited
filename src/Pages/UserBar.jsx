@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import { Link } from "react-router-dom";
-import { AppContext } from "./AppContext";
-import "./Styles/UserBar.css"
+import { AppContext } from "../Context/AppContext";
+import "../Styles/UserBar.css"
 
 const UserPage = ({ displayName, logout }) => {
 
