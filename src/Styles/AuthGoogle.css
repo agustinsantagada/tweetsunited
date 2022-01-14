@@ -13,3 +13,23 @@
     height: 4em;
     font-size: 1.1em;
 }
+
+.google-button{
+  width: 26em;
+  height: 3em;
+  style: none;
+  background-color: #4285F4;
+  border: 0;
+  color: white;
+  font-size: 1em;
+}
+
+.google-button:active{
+  width: 26em;
+  height: 3em;
+  style: none;
+  background-color: white;
+  border: 0;
+  color: #4285F4;
+  font-size: 1em;
+}

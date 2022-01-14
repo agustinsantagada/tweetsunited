@@ -51,18 +51,9 @@ const values = () => {
     <div>
       {(!user) ? 
         <div className="gSignInWrapper">
-          <GoogleButton
-            className="google-btn"
-            style={{ 
-                width:410,
-                height:50  
-              }}
-            onClick={() => {
+         <button className="google-button" onClick={() => {
               values();
-            }}
-          >
-            Logear con google
-          </GoogleButton>
+            }}>Sign Up with Google</button>
           <div>{error}</div>
         </div>
        : 
