@@ -10,6 +10,9 @@ import FavoriteIcon from '@material-ui/icons/Favorite'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline'
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 import "../Styles/MapTweets.css"
+import swal from "sweetalert2";
+
+
 
 const MapTweet = () => {
 
@@ -27,9 +30,32 @@ const MapTweet = () => {
     fetchData()
   },[])
 
-  const handleDelete = async (tweet) => {
-    await removeTweets(tweet);
-    fetchData();
+  const handleDelete = (tweet) => {
+    swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#00DA76',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+      background: '#60265B',
+      color: "white"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        removeTweets(tweet);
+        fetchData();
+        swal.fire({
+          background: '#60265B',
+          color: "white",
+          title: 'Deleted!',
+          text:'Your file has been deleted.',
+          confirmButtonText: 'Ok',
+          icon: 'success'
+        })
+      }
+    })
+    
   }
 
   const handleLike = async (tweet) => {
