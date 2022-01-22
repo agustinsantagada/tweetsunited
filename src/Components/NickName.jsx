@@ -8,7 +8,7 @@ import "../Styles/NickName.css"
 
 export default function NickName() {
 
-  const { user, nick, setNick, setNickName } = useContext(AppContext);
+  const { color, user, nick, setNick, setNickName } = useContext(AppContext);
   const history = useHistory()
 
   const showAlert = () => {
@@ -61,7 +61,7 @@ export default function NickName() {
           onChange={(e) => {setNick(e.target.value)}}>
            </input> 
       </form>
-      <div className="np-tlt-color" >Select tyour favourite color</div>
+      <div className="np-tlt-color" >Select tyour favourite color: {color.name}</div>
       <ColorPicker />
         <Link path="/home" className="np-btn" onClick={handleSubmit}>
           CONTINUE

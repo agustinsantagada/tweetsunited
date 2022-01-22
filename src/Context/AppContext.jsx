@@ -1,13 +1,13 @@
 import React, { useState, createContext} from "react";
 
 export const colors = [
-    { name: "blanco", hex: "#fff" },
-    { name: "rojo", hex: "#F50D5A" },
-    { name: "naranja", hex: "#FF865C" },
-    { name: "amarillo", hex: "#FFEA5C" },
-    { name: "verde", hex: "#00DA76" },
-    { name: "azul", hex: "#0096CE" },
-    { name: "violeta", hex: "#800FFF" }
+    { name: "Blanco", hex: "#fff" },
+    { name: "Rojo", hex: "#F50D5A" },
+    { name: "Naranja", hex: "#FF865C" },
+    { name: "Amarillo", hex: "#FFEA5C" },
+    { name: "Verde", hex: "#00DA76" },
+    { name: "Azul", hex: "#0096CE" },
+    { name: "Violeta", hex: "#800FFF" }
   ];
 
 export const AppProvider = (props) => {

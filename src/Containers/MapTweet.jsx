@@ -44,7 +44,6 @@ const MapTweet = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         removeTweets(tweet);
-        fetchData();
         swal.fire({
           background: '#60265B',
           color: "white",
@@ -54,6 +53,7 @@ const MapTweet = () => {
           icon: 'success'
         })
       }
+      fetchData();
     })
     
   }
