@@ -10,13 +10,13 @@ function App() {
   const { user } = useContext(AppContext);
 
   return (
-    <BrowserRouter>
-    <Switch>
-      <div className="App">
-        {!user ? <Route component = {LaunchPage} path= "/" exact /> : !user.color || !user.username ? <Route component={NickPage} path="/" /> : <Route component={ HomePage } path="/home"/>}
-      </div>
-      </Switch>
-    </BrowserRouter>
+      <BrowserRouter>
+      <Switch>
+        <div className="App">
+          {!user ? <Route component = {LaunchPage} path= "/" exact /> : !user.color || !user.username ? <Route component={NickPage} path="/" /> : <Route component={ HomePage } path="/home"/>}
+        </div>
+        </Switch>
+      </BrowserRouter>
   );
 }
 

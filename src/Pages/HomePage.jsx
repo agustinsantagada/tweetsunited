@@ -5,9 +5,6 @@ import NewTweet from "../Components/NewTweet"
 import UserBar from "../Pages/UserBar"
 import ProfilePage from "../Pages/ProfilePage"
 
-
-
-
 export default function HomePage () {
   const history = useHistory();
 
