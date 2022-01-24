@@ -19,11 +19,12 @@ const MapTweet = () => {
   const { user, tweets, setTweets } = useContext(AppContext)
 
   const [style, setStyle] = useState("cont2");
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   const fetchData = async () => {
     const tweetsAqui = await getTweets();
     setTweets(tweetsAqui)
+    setLoading(false)
   }
 
   useEffect(()=> {

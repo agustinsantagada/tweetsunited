@@ -147,20 +147,23 @@
     color: white;
   }
 
+  .loading{
+    color: white;
+    font-size: 30em;
+  }
+
   .spinner {
-    border: 4px solid rgba(0, 0, 0, 0.1);
+    border: 10px solid rgba(0, 0, 0, 0.1);
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    border-left-color: #09f;
+    border-left-color: #800FFF;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 15em;
-    margin-left: 25em;
-    padding: 1em;
-
-  
+    margin: 5em;
+    margin-left: 16em;
+    padding: 2em;
     animation: spin 1s ease infinite;
   }
   
@@ -192,6 +195,31 @@
       border-color: #60265B;
       margin-left: -1em;
       overflow-y: scroll;
+  }
+
+  .spinner {
+    border: 10px solid rgba(0, 0, 0, 0.1);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border-left-color: #800FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5em;
+    margin-left: 50em;
+    padding: 2em;
+    animation: spin 1s ease infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
   }
 
 }
