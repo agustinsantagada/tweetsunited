@@ -18,7 +18,7 @@ export default function LogInPage () {
             <h1 className="lp-tlt">Hello Buddy!!</h1>
             <div className="lp-tltl">Bienvenido, a DevsUnited! Te invitamos a loguearte con tu cuenta favorita. </div>
             <div className="lp-tltl">Please, sign in here: </div>
-            {!user ? <Route component={AutenticatorGoogle} path="/" exact className="auth-google"/> : <Route component={NickPage} path="/nick"/>}   
+            {!user ? <Route component={AutenticatorGoogle} path="/" exact className="auth-google"/> : <Route component={NickPage} path="/nick"exact/>}   
           </div>     
         </div>
       </Switch>

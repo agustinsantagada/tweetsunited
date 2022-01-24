@@ -8,7 +8,7 @@ export default function LaunchPage () {
   return (
     <BrowserRouter>
     <Switch>
-      <Route component={ LogInPage } path='/'/>
+      <Route component={ LogInPage } path='/'exact/>
     </Switch>
     </BrowserRouter>
   )}

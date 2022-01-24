@@ -10,10 +10,10 @@ function App() {
   const { user } = useContext(AppContext);
 
   return (
-      <BrowserRouter>
+      <BrowserRouter  forceRefresh={true}>
       <Switch>
         <div className="App">
-          {!user ? <Route component = {LaunchPage} path= "/" exact /> : !user.color || !user.username ? <Route component={NickPage} path="/" /> : <Route component={ HomePage } path="/home"/>}
+          {!user ? <Route component = {LaunchPage} path= "/" exact /> : !user.color || !user.username ? <Route component={NickPage} path="/" exact/> : <Route component={ HomePage } path="/home" exact/>}
         </div>
         </Switch>
       </BrowserRouter>

@@ -16,8 +16,8 @@ export default function NickPage () {
     <Switch>
       <div className="np-bkg">
       {!nickName ? 
-      <Route component={ NickName } path="/" /> : 
-      <Route component = { HomePage } path="/home"/>}
+      <Route component={ NickName } path="/" exact/> : 
+      <Route component = { HomePage } path="/home"exact/>}
       </div>
       </Switch>
     </BrowserRouter>

@@ -17,8 +17,8 @@ export default function ProfilePage () {
         <Switch>
           <Route component = {MapTweetUser} path = '/ProfilePage'  exact/>
           <Route component = {MapTweetLikes} path = '/favorites'  exact/>
-          <Route component = {HomePage} path = '/home'/>
-          <Route component={ LaunchPage } path = '/' />
+          <Route component = {HomePage} path = '/home' exact/>
+          <Route component={ LaunchPage } path = '/' exact/>
         </Switch>
       </div>
     </BrowserRouter>
